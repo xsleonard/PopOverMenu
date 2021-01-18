@@ -16,33 +16,13 @@ extension PopOverViewController {
     }
     
     override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell
-        
         let title = titles[indexPath.row]
-        
-        if isDescriptions() {
-            
-            cell = tableView.dequeueReusableCell(withIdentifier: "SubTitleCell")!
-            
-            cell.textLabel?.text = title
-            cell.textLabel?.font = titleLabelFont
-            cell.textLabel?.sizeToFit()
-            
-            if let descriptions = self.descriptions {
-                let description = descriptions[indexPath.row]
-                
-                cell.detailTextLabel?.text = description
-                cell.detailTextLabel?.font = detailLabelFont
-                cell.detailTextLabel?.sizeToFit()
-            }
-            
-        } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "SingleTitleCell")!
-            cell.textLabel?.text = title
-            cell.textLabel?.font = titleLabelFont
-            cell.textLabel?.sizeToFit()
-        }
-        
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
+        cell.textLabel?.text = title
+        cell.textLabel?.font = titleLabelFont
+        cell.textLabel?.sizeToFit()
+
         if (selectRow == nil) {
             cell.accessoryType = UITableViewCell.AccessoryType.none
         } else {
@@ -55,18 +35,6 @@ extension PopOverViewController {
         }
 
         return cell
-    }
-    
-    private func isDescriptions() -> Bool {
-        guard let descriptions = self.descriptions else {
-            return false
-        }
-        
-        if descriptions.count > 0 {
-            return true
-        } else {
-            return false
-        }
     }
     
     override open func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath) {

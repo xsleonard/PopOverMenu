@@ -14,11 +14,9 @@ Basic
 ```html
     public func openMenu(sender:UIBarButtonItem) {
         let titles = ["Menu1", "Menu2", "Menu3"]
-        let descriptions = ["description1", "description2", "description3"]
         
         let popOverViewController = PopOverViewController.instantiate()
         popOverViewController.set(titles: titles)
-        popOverViewController.set(descriptions: descriptions)
 
         // option parameteres
         // popOverViewController.set(selectRow: 1)
@@ -173,9 +171,8 @@ Two step
         let popOverViewController = PopOverViewController.instantiate()
 
         let titles = ["Menu1", "Menu2", "Menu3"]
-        let descriptions = ["description1", "description2", "description3"]
 
-        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, descriptions: descriptions, separatorStyle: .none) { (selectRow) in
+        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, separatorStyle: .none) { (selectRow) in
             self.textLabel?.text = String(selectRow)
         }
 
@@ -251,12 +248,10 @@ enum Drink: String, CaseIterable {
 -(IBAction)openMenu:(id)sender {
     
     NSArray *titles = @[@"Menu1", @"Menu2", @"Menu3"];
-    NSArray *descriptions = @[@"description1", @"", @"description3"];
     
     PopOverViewController *popOverViewController = [PopOverViewController instantiate];
     
     [popOverViewController setTitles:titles];
-    [popOverViewController setDescriptions:descriptions];
     
     popOverViewController.popoverPresentationController.barButtonItem = sender;
     popOverViewController.preferredContentSize = CGSizeMake(300, 135);
