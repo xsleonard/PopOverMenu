@@ -35,12 +35,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     override open func viewDidLoad() {
         super.viewDidLoad()
 
-        #if swift(>=4.2)
-            tableView.rowHeight = UITableView.automaticDimension
-        #else
-            tableView.rowHeight = UITableViewAutomaticDimension
-        #endif
-
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = cellHeight
         tableView.tableFooterView = UIView()
         tableView.showsHorizontalScrollIndicator = false

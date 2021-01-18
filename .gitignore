@@ -30,3 +30,4 @@ SampleObjectiveC/Podfile.lock
 SampleObjectiveC/Pods/*
 
 *.xcworkspace
+.swiftpm/
